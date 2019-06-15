@@ -1,0 +1,32 @@
+diff --git a/keras_perceptron.py b/keras_perceptron.py
+index 71abdcd..9d9301a 100644
+--- a/keras_perceptron.py
++++ b/keras_perceptron.py
+@@ -13,8 +13,9 @@ import wandb
+ run = wandb.init()
+ config = run.config
+ config.optimizer = "adam"
+-config.epochs = 10
++config.epochs = 20
+ config.hidden_nodes = 100
++config.batch_size = 128
+ 
+ # load data
+ (X_train, y_train), (X_test, y_test) = mnist.load_data()
+@@ -39,12 +40,15 @@ num_classes = y_train.shape[1]
+ # create model
+ model = Sequential()
+ model.add(Flatten(input_shape=(img_width, img_height)))
++model.add(layers.Dropout(0.3, noise_shape=None, seed=None))
++model.add(Dense(config.hidden_nodes, activation='relu'))
++model.add(layers.Dropout(0.2, noise_shape=None, seed=None))
+ model.add(Dense(config.hidden_nodes, activation='relu'))
+ model.add(Dense(num_classes, activation='softmax'))
+ model.compile(loss='categorical_crossentropy', optimizer=config.optimizer,
+               metrics=['accuracy'])
+ model.summary()
+ # Fit the model
+-model.fit(X_train, y_train, validation_data=(X_test, y_test),
++model.fit(X_train, y_train, validation_data=(X_test, y_test), batch_size = config.batch_size,
+           epochs=config.epochs,
+           callbacks=[WandbCallback(data_type="image", labels=labels)])

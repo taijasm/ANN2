@@ -1,0 +1,21 @@
+{
+    "root": "/home/jovyan/ANN2",
+    "git": {
+        "remote": "https://github.com/taijasm/ANN2.git",
+        "commit": "eca18ce45269b908f8c92d8c7304e1708ea94f4e"
+    },
+    "email": null,
+    "startedAt": "2019-06-15T07:55:53.908112",
+    "host": "jupyter-taijasm",
+    "username": "jovyan",
+    "os": "Linux-4.14.119+-x86_64-with-debian-buster-sid",
+    "python": "3.7.3",
+    "cpu_count": 2,
+    "program": "keras_perceptron.py",
+    "args": [],
+    "state": "finished",
+    "heartbeatAt": "2019-06-15T07:57:04.759630",
+    "jobType": null,
+    "mode": "run",
+    "exitcode": 0
+}

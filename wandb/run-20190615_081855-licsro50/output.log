@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "keras_perceptron.py", line 43, in <module>
+    model.add(layers.Dropout(0.3, noise_shape=None, seed=None))
+NameError: name 'layers' is not defined
